@@ -1,0 +1,42 @@
+apply plugin: 'java'
+
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
+version = '1.0'
+
+defaultTasks 'runtimejar'
+
+tasks.withType(Compile) {
+	options.encoding = "utf-8"
+}
+
+dependencies {
+	compile fileTree(dir: 'lib', include: '**/*.jar')
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.humpic.framework.tools.chm.Application'
+    }
+}
+
+task runtimejar(dependsOn: jar) {
+    def outputFile = 'build/libs/javadoc.chm.jar'
+    doLast {
+        new File(outputFile).delete()
+
+        ant.jar(
+            destfile: outputFile,
+            filesetmanifest: 'merge',
+            duplicate: 'preserve'
+        ) {
+            fileTree(dir: 'lib', include: '**/*.jar').each {
+                zipfileset(src: it, includes: '**/*.class')
+            }
+            //zipgroupfileset(dir: 'lib', includes: '*.jar')
+            zipgroupfileset(dir: 'build/libs', includes: '**/*.jar')
+        }
+
+    }
+}
+

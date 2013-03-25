@@ -4,3 +4,8 @@
 *.jar
 *.war
 *.ear
+
+# Build Directorys #
+/.gradle
+/build
+/bin

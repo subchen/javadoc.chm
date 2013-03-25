@@ -1,0 +1,22 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Contents file=htmlhelp.hhc
+Index file=htmlhelp.hhk
+Title=${title}
+Default topic=${indexUrl}
+Compiled file=${title}.chm
+Display compile progress=Yes
+Binary Index=Yes
+Full-text search=Yes
+Language=0x804
+Default Window=main
+
+[WINDOWS]
+main=,"htmlhelp.hhc","htmlhelp.hhk","${indexUrl}","${indexUrl}",,,,,0x23420,,0x187e,,0x118b0000,,,,,,0
+
+
+[FILES]
+#foreach ($f in $files)
+$f
+#end
+

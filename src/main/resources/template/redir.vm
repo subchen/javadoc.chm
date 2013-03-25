@@ -1,0 +1,13 @@
+<html><head>
+<title>Occurences of ${keyManager.key}</title>
+<meta http-equiv=Content-Type content="text/html; charset=${encoding}">
+</head>
+<body style='{font-family:Verdana,Arial; font-size:10pt; }'>
+
+<dl>
+<dt><b>${keyManager.key}</b> occurences:
+#foreach ($m in $keyManager.pairs)
+<dd>${m}</dd>
+#end
+</dl>
+</body></html>

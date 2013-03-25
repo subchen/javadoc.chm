@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Humpic&reg; Javadoc2CHM">
+</HEAD>
+
+<BODY>
+<OBJECT type="text/site properties">
+	<param name="Window Styles" value="0x800025">
+</OBJECT>
+#foreach ($package in $packages)
+<UL>
+	<LI><OBJECT type="text/sitemap">
+    		<param name="Name" value="${package.name}">
+    		<param name="Local" value="${package.url}">
+		</OBJECT>
+	</LI>
+	<UL>
+#foreach ($c in $package.classes)
+		<LI><OBJECT type="text/sitemap">
+    			<param name="Name" value="${c.shortName}">
+    			<param name="Local" value="${c.url}">
+    			<param name="ImageNumber" value="9">
+			</OBJECT>
+		</LI>
+#if ($c.methods.size() > 0)
+		<UL>
+#foreach ($m in $c.methods)
+			<LI><OBJECT type="text/sitemap">
+    				<param name="Name" value="${m.fullName}">
+    				<param name="Local" value="${m.url}">
+    				<param name="ImageNumber" value="11">
+				</OBJECT>
+			</LI>
+#end
+		</UL>
+#end
+#end
+	</UL>
+</UL>
+#end
+</BODY></HTML>

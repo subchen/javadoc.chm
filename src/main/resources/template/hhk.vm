@@ -1,0 +1,18 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Humpic&reg; Javadoc.chm">
+</HEAD>
+
+<BODY>
+<UL>
+#foreach ($index in $sortIndexes)
+	<LI><OBJECT type="text/sitemap">
+    		<param name="Keyword" value="${index.key}">
+    ##		<param name="Name" value="${index.value}">
+    		<param name="Local" value="${index.value}">
+		</OBJECT>
+	</LI>
+#end
+</UL>
+</BODY></HTML>
