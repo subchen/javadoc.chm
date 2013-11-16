@@ -12,6 +12,10 @@ Javadoc.chm can identify the new doc style for java 7.0+.
 
 # How to
 
+Download binary jar
+
+https://github.com/subchen/javadoc.chm/raw/master/dist/javadoc.chm-2.0.0.jar
+
 Generates HTML Help project files
 
 ```
