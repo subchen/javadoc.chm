@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project default="dist" basedir=".">
+    <property file="${basedir}/build.properties" />
+
+    <path id="compile.classpath">
+        <fileset dir="${basedir}/lib" includes="**/*.jar" />
+    </path>
+    <path id="compile.sourcepath">
+        <pathelement location="${basedir}/src/main/java"/>
+    </path>
+    <path id="compile.resources">
+        <fileset dir="${basedir}/src/main/resources" excludes="**/*.java" />
+    </path>
+
+    <target name="clean">
+        <delete dir="${build.dir}" quiet="true" />
+    </target>
+
+    <target name="compile" depends="clean">
+        <mkdir dir="${classes.dir}" />
+        <javac destdir="${classes.dir}"
+               classpathref="compile.classpath"
+               debug="on" nowarn="true" deprecation="off"
+               encoding="${javac.encoding}"
+               includeantruntime="off">
+            <src refid="compile.sourcepath" />
+        </javac>
+        <copy todir="${classes.dir}">
+            <path refid="compile.resources" />
+        </copy>
+    </target>
+
+    <target name="jar" depends="compile">
+        <mkdir dir="${dist.dir}" />
+        <jar jarfile="${dist.jar}" whenempty="fail">
+            <fileset dir="${classes.dir}" includes="**" />
+            <manifest>
+                <attribute name="Built-By" value="${product.author}" />
+                <attribute name="Implementation-Vendor" value="${product.vendor}" />
+                <attribute name="Implementation-Title" value="${product.name}" />
+                <attribute name="Implementation-Version" value="${product.version}" />
+                <attribute name="Main-Class" value="jerbrick.tools.chm.Application" />
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="dist" depends="jar">
+        
+    </target>
+
+</project>

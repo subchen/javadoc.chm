@@ -2,7 +2,7 @@ apply plugin: 'java'
 
 sourceCompatibility = 1.6
 targetCompatibility = 1.6
-version = '1.0'
+version = '2.0.0'
 
 defaultTasks 'runtimejar'
 
@@ -16,7 +16,7 @@ dependencies {
 
 jar {
     manifest {
-        attributes 'Main-Class': 'com.humpic.framework.tools.chm.Application'
+        attributes 'Main-Class': 'jerbrick.tools.chm.Application'
     }
 }
 
