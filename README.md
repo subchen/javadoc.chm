@@ -3,7 +3,7 @@
 This software generates an Microsoft HTML Help(CHM) from generic javadoc style API documents.
 It's a easy way to search something from javadoc with pre-compiled full text index.
 
-Javadoc.chm can identify the new doc style for java 7.0+.
+Javadoc.chm can identify the new doc style for java 8.0+.
 
 # Requirements
 
@@ -14,7 +14,7 @@ Javadoc.chm can identify the new doc style for java 7.0+.
 
 Download binary jar
 
-https://github.com/subchen/javadoc.chm/raw/master/dist/javadoc.chm-2.0.0.jar
+https://github.com/subchen/javadoc.chm/raw/master/dist/javadoc.chm-2.1.0.jar
 
 Generates HTML Help project files
 

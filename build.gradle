@@ -2,7 +2,7 @@ apply plugin: 'java'
 
 sourceCompatibility = 1.6
 targetCompatibility = 1.6
-version = '2.0.0'
+version = '2.1.0'
 
 defaultTasks 'runtimejar'
 
@@ -36,7 +36,6 @@ task runtimejar(dependsOn: jar) {
             //zipgroupfileset(dir: 'lib', includes: '*.jar')
             zipgroupfileset(dir: 'build/libs', includes: '**/*.jar')
         }
-
     }
 }
 

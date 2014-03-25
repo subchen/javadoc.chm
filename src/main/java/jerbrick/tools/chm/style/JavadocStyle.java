@@ -2,7 +2,7 @@
  * javadoc.chm
  * http://subchen.github.io/javadoc.chm/
  * 
- * Copyright 2010-2013 Guoqiang Chen. All rights reserved.
+ * Copyright 2010-2014 Guoqiang Chen. All rights reserved.
  * Email: subchen@gmail.com
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,6 +20,7 @@
 package jerbrick.tools.chm.style;
 
 import java.util.regex.Pattern;
+import org.apache.commons.lang.StringUtils;
 
 public class JavadocStyle {
 
@@ -47,4 +48,11 @@ public class JavadocStyle {
         return Pattern.compile("<TITLE>([^<]*)</TITLE>");
     }
 
+    public boolean isMethod(String url) {
+        return url.endsWith("(");
+    }
+
+    public String getMethodFullName(String url) {
+        return StringUtils.substringAfter(url, "#");
+    }
 }

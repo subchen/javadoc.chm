@@ -10,4 +10,12 @@
 <dd>${m}</dd>
 #end
 </dl>
+
+<br/>
+<br/>
+<p style="border-top:1px solid #ccc; padding: 20px;">
+Copyright 2010-2014 Guoqiang Chen. All rights reserved. <br/>
+<a href="http://subchen.github.io/" target="_blank">http://subchen.github.io/</a> &nbsp; subchen@gmail.com
+</p>
+
 </body></html>

@@ -2,7 +2,7 @@
  * javadoc.chm
  * http://subchen.github.io/javadoc.chm/
  * 
- * Copyright 2010-2013 Guoqiang Chen. All rights reserved.
+ * Copyright 2010-2014 Guoqiang Chen. All rights reserved.
  * Email: subchen@gmail.com
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,13 +29,13 @@ import org.apache.commons.lang.StringUtils;
 
 public class IndexesReader {
 
-    private Map<String, KeyManager> keyManagerMaps = new HashMap<String, KeyManager>();
+    private Map<String, KeyManager> keyManagerMaps = new HashMap<String, KeyManager>(256);
 
     public Map<String, String> getIndexes(File resource) throws IOException {
         Pattern p = Config.style.getIndexRegex();
         Matcher m = p.matcher(FileUtils.readFileToString(resource, Config.encoding));
 
-        Map<String, String> indexMaps = new HashMap<String, String>(512);
+        Map<String, String> indexMaps = new HashMap<String, String>(1024);
         while (m.find()) {
             addIndex(indexMaps, m.group(2), m.group(1));
         }
@@ -48,10 +48,13 @@ public class IndexesReader {
         urlToUse = StringUtils.remove(urlToUse, "../");
         urlToUse = StringUtils.remove(urlToUse, "./");
 
-        if (text.indexOf('(') < 0 && url.indexOf('#') < 0) {
+        if (url.indexOf('#') < 0) {
             key = text + " class";
         } else {
             key = StringUtils.substringBefore(text, "(");
+            if (text.indexOf('(') != -1) {
+                key = key + "()";
+            }
 
             String textToUse = StringUtils.substringBefore(urlToUse, ".html");
             textToUse = textToUse.replace('/', '.') + "." + text;

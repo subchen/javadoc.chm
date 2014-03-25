@@ -2,7 +2,7 @@
  * javadoc.chm
  * http://subchen.github.io/javadoc.chm/
  * 
- * Copyright 2010-2013 Guoqiang Chen. All rights reserved.
+ * Copyright 2010-2014 Guoqiang Chen. All rights reserved.
  * Email: subchen@gmail.com
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,7 +38,7 @@ public class JavaInfoReader {
     private List<PackageInfo> getAllPackages(File resource) throws IOException {
         List<String> lines = FileUtils.readLines(resource, Config.encoding);
 
-        Map<String, PackageInfo> packageMaps = new HashMap<String, PackageInfo>();
+        Map<String, PackageInfo> packageMaps = new HashMap<String, PackageInfo>(32);
         List<PackageInfo> packages = new ArrayList<PackageInfo>(50);
         for (String line : lines) {
             line = line.trim();
@@ -54,7 +54,7 @@ public class JavaInfoReader {
         // add all classes to package
         List<ClassInfo> classes = getAllClasses(new File(Config.apiLocation, "allclasses-frame.html"));
         for (ClassInfo classinfo : classes) {
-            PackageInfo p = (PackageInfo) packageMaps.get(classinfo.getPackageName());
+            PackageInfo p = packageMaps.get(classinfo.getPackageName());
             p.addClass(classinfo);
         }
 
@@ -65,7 +65,7 @@ public class JavaInfoReader {
         Pattern p = Config.style.getJavaClassRegex();
         Matcher m = p.matcher(FileUtils.readFileToString(resource, Config.encoding));
 
-        List<ClassInfo> classes = new ArrayList<ClassInfo>(64);
+        List<ClassInfo> classes = new ArrayList<ClassInfo>(128);
         while (m.find()) {
             ClassInfo info = new ClassInfo();
             info.setFullName(m.group(2).replace('/', '.'));
@@ -89,24 +89,23 @@ public class JavaInfoReader {
         while (m.find()) {
             String name = m.group(2);
             String url = m.group(1);
-            boolean isMethod = url.indexOf("(") > 0;
-            String fullName = StringUtils.substringAfter(url, "#");
 
             url = StringUtils.remove(url, "../");
             url = StringUtils.remove(url, "./");
-            String anchor = StringUtils.substringAfter(url, "#");
-            url = StringUtils.substringBefore(url, "#") + "#" + AnchorNameManager.getNewAnchorName(anchor);
 
-            if (isMethod) {
+            String anchor = StringUtils.substringAfter(url, "#");
+            String linkUrl = StringUtils.substringBefore(url, "#") + "#" + AnchorNameManager.getNewAnchorName(anchor);
+
+            if (Config.style.isMethod(url)) {
                 MethodInfo info = new MethodInfo();
                 info.setName(name);
-                info.setFullName(fullName);
-                info.setUrl(url);
+                info.setFullName(Config.style.getMethodFullName(url));
+                info.setUrl(linkUrl);
                 classinfo.addMethod(info);
             } else {
                 FieldInfo info = new FieldInfo();
                 info.setName(name);
-                info.setUrl(url);
+                info.setUrl(linkUrl);
                 classinfo.addField(info);
             }
         }

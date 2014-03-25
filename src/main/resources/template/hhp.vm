@@ -2,7 +2,7 @@
 Compatibility=1.1 or later
 Contents file=htmlhelp.hhc
 Index file=htmlhelp.hhk
-Title=${title}
+Title=${title} - by http://subchen.github.io/
 Default topic=${indexUrl}
 Compiled file=${title}.chm
 Display compile progress=Yes

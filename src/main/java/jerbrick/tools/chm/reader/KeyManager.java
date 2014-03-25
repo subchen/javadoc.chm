@@ -2,7 +2,7 @@
  * javadoc.chm
  * http://subchen.github.io/javadoc.chm/
  * 
- * Copyright 2010-2013 Guoqiang Chen. All rights reserved.
+ * Copyright 2010-2014 Guoqiang Chen. All rights reserved.
  * Email: subchen@gmail.com
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,10 +24,12 @@ import org.apache.commons.lang.StringUtils;
 
 public class KeyManager {
     private String key;
+    private String url;
     private List<String> pairs = new ArrayList<String>();
 
     public KeyManager(String key) {
         this.key = key;
+        this.url = "redirs/" + StringUtils.replace(key, "()", "_") + Math.abs(key.hashCode()) + ".html";
     }
 
     public String getKey() {
@@ -54,7 +56,7 @@ public class KeyManager {
     }
 
     public String getUrl() {
-        return "redirs/" + key + "_" + Math.abs(key.hashCode()) + ".html";
+        return url;
     }
 
     public void sort() {

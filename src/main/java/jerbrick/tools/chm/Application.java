@@ -2,7 +2,7 @@
  * javadoc.chm
  * http://subchen.github.io/javadoc.chm/
  * 
- * Copyright 2010-2013 Guoqiang Chen. All rights reserved.
+ * Copyright 2010-2014 Guoqiang Chen. All rights reserved.
  * Email: subchen@gmail.com
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +23,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 import jerbrick.tools.chm.reader.ApiReader;
-import jerbrick.tools.chm.style.Javadoc7Style;
+import jerbrick.tools.chm.style.*;
 import org.apache.commons.io.FileUtils;
 
 public class Application {
@@ -36,8 +36,12 @@ public class Application {
             Config.encoding = args[1];
         }
 
-        if (new File(Config.apiLocation, "resources/background.gif").exists()) {
+        if (new File(Config.apiLocation, "resources/fonts").exists()) {
+            Config.style = new Javadoc8Style();
+        } else if (new File(Config.apiLocation, "resources/background.gif").exists()) {
             Config.style = new Javadoc7Style();
+        } else {
+            Config.style = new JavadocStyle();
         }
 
         clean();
