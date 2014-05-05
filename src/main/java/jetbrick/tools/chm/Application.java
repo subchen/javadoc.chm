@@ -17,13 +17,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jerbrick.tools.chm;
+package jetbrick.tools.chm;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
-import jerbrick.tools.chm.reader.ApiReader;
-import jerbrick.tools.chm.style.*;
+import jetbrick.tools.chm.reader.ApiReader;
+import jetbrick.tools.chm.style.*;
 import org.apache.commons.io.FileUtils;
 
 public class Application {

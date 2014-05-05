@@ -16,7 +16,7 @@ dependencies {
 
 jar {
     manifest {
-        attributes 'Main-Class': 'jerbrick.tools.chm.Application'
+        attributes 'Main-Class': 'jetbrick.tools.chm.Application'
     }
 }
 

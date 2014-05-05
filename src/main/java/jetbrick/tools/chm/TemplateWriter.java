@@ -17,12 +17,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jerbrick.tools.chm;
+package jetbrick.tools.chm;
 
 import java.io.*;
 import java.util.Collection;
 import java.util.Map;
-import jerbrick.tools.chm.reader.KeyManager;
+import jetbrick.tools.chm.reader.KeyManager;
 import org.apache.commons.io.IOUtils;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;

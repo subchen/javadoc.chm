@@ -17,7 +17,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jerbrick.tools.chm.reader;
+package jetbrick.tools.chm.reader;
 
 import java.util.*;
 import org.apache.commons.lang.StringUtils;

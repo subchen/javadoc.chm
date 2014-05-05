@@ -17,14 +17,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jerbrick.tools.chm.reader;
+package jetbrick.tools.chm.reader;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import jerbrick.tools.chm.Config;
+import jetbrick.tools.chm.Config;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 

@@ -40,7 +40,7 @@
                 <attribute name="Implementation-Vendor" value="${product.vendor}" />
                 <attribute name="Implementation-Title" value="${product.name}" />
                 <attribute name="Implementation-Version" value="${product.version}" />
-                <attribute name="Main-Class" value="jerbrick.tools.chm.Application" />
+                <attribute name="Main-Class" value="jetbrick.tools.chm.Application" />
             </manifest>
         </jar>
     </target>

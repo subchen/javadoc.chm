@@ -17,17 +17,38 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jerbrick.tools.chm;
+package jetbrick.tools.chm.model;
 
-import java.io.File;
-import java.nio.charset.Charset;
-import jerbrick.tools.chm.style.JavadocStyle;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Config {
+public class PackageInfo {
 
-    public static File apiLocation = new File(".");
-    public static String encoding = Charset.defaultCharset().name();
+    private String name;
+    private String url;
+    private List<ClassInfo> classes = new ArrayList<ClassInfo>();
 
-    public static JavadocStyle style = new JavadocStyle();
+    public List<ClassInfo> getClasses() {
+        return classes;
+    }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public void addClass(ClassInfo classinfo) {
+        classes.add(classinfo);
+    }
 }

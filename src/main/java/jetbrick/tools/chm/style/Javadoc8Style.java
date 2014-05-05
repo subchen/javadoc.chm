@@ -17,7 +17,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jerbrick.tools.chm.style;
+package jetbrick.tools.chm.style;
 
 import java.util.regex.Pattern;
 import org.apache.commons.lang.StringUtils;

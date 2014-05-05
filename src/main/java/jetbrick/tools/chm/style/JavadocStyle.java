@@ -17,39 +17,42 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jerbrick.tools.chm.style;
+package jetbrick.tools.chm.style;
 
 import java.util.regex.Pattern;
+import org.apache.commons.lang.StringUtils;
 
-public class Javadoc7Style extends JavadocStyle {
+public class JavadocStyle {
 
-    @Override
     public Pattern getAnchorNameRegex() {
-        return Pattern.compile("<a name=\"([^\"]*)\"[^>]*>");
+        return Pattern.compile("<A NAME=\"([^\"]*)\"[^>]*>");
     }
 
-    @Override
     public Pattern getIndexRegex() {
-        return Pattern.compile("<dt><span class=\"strong\"><a href=\"([^\"]*)\"[^>]*>([^<]*)</a></span>");
+        return Pattern.compile("<DT><A HREF=\"([^\"]*)\"[^>]*><B>([^<]*)</B></A>");
     }
 
-    @Override
     public Pattern getJavaClassRegex() {
-        return Pattern.compile("<a href=\"(([^\"]*)\\.html)\"[^>]*>(?:<i>)?([^<]*)(?:</i>)?</a>");
+        return Pattern.compile("<A HREF=\"(([^\"]*)\\.html)\"[^>]*>(?:<I>)?([^<]*)(?:</I>)?</A>");
     }
 
-    @Override
     public Pattern getJavaFieldRegex() {
-        return Pattern.compile("<td class=\"col[a-zA-Z]+\"><code><strong><a href=\"([^\"]*)\"[^>]*>([^<]*)</a>");
+        return Pattern.compile("<TD><CODE><B><A HREF=\"([^\"]*)\"[^>]*>([^<]*)</A>");
     }
 
-    @Override
     public Pattern getIndexUrlRegex() {
-        return Pattern.compile("<a href=\"([^\"]*)\"[^>]*>");
+        return Pattern.compile("<A HREF=\"([^\"]*)\"[^>]*>");
     }
 
-    @Override
     public Pattern getApiTitleRegex() {
-        return Pattern.compile("<title>([^<]*)</title>");
+        return Pattern.compile("<TITLE>([^<]*)</TITLE>");
+    }
+
+    public boolean isMethod(String url) {
+        return url.endsWith("(");
+    }
+
+    public String getMethodFullName(String url) {
+        return StringUtils.substringAfter(url, "#");
     }
 }

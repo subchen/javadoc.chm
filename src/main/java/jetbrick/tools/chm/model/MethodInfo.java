@@ -17,10 +17,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jerbrick.tools.chm.model;
+package jetbrick.tools.chm.model;
 
-public class FieldInfo {
+public class MethodInfo {
+
     private String name;
+    private String fullName;
     private String url;
 
     public String getName() {
@@ -39,4 +41,11 @@ public class FieldInfo {
         this.url = url;
     }
 
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getFullName() {
+        return this.fullName;
+    }
 }
